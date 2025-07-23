@@ -1,11 +1,90 @@
-[gd_scene load_steps=7 format=4 uid="uid://cymils6l4rkqj"]
+[gd_scene load_steps=19 format=4 uid="uid://cymils6l4rkqj"]
 
+[ext_resource type="Script" uid="uid://ds8fq6wkpstsk" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://teqt4c3tbse6" path="res://player.gd" id="1_h2yge"]
-[ext_resource type="Texture2D" uid="uid://ekhhsvxu6ycn" path="res://icon.svg" id="2_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://cu4vdm2xfm3rc" path="res://Terrain (16x16).png" id="3_h2yge"]
+[ext_resource type="Texture2D" path="res://Terrain (16x16).png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://fo3gx6f8kurl" path="res://assets/Cat-2-Idle.png" id="3_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
-size = Vector2(128, 127)
+size = Vector2(773, 558)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(400, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(450, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cqfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("3_h2yge")
@@ -159,23 +238,27 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_1bvp3")
 
 [node name="Node" type="Node"]
+script = ExtResource("1_1bvp3")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(329, 112)
-texture = ExtResource("2_1bvp3")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(327, 108)
+position = Vector2(1166.5, -24)
 shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(328, 114)
-zoom = Vector2(0.465, 0.465)
+position = Vector2(1195, 5)
+zoom = Vector2(0.115, 0.115)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+texture_filter = 1
+position = Vector2(1151, -27)
+scale = Vector2(40, 40)
+sprite_frames = SubResource("SpriteFrames_2cqfq")
+animation = &"idle"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(20, 20)
