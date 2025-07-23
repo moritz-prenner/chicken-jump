@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd2t88f1p3djx"
-path="res://.godot/imported/Cat-2-Licking 2.png-d0cb9bdc5534eb664505e255b1e21b66.ctex"
+uid="uid://cu1aveelhgv5g"
+path="res://.godot/imported/Run (32x34).png-18b71f0e5b0bd3dd0014b846f6bf1fee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cat-2-Licking 2.png"
-dest_files=["res://.godot/imported/Cat-2-Licking 2.png-d0cb9bdc5534eb664505e255b1e21b66.ctex"]
+source_file="res://assets/Run (32x34).png"
+dest_files=["res://.godot/imported/Run (32x34).png-18b71f0e5b0bd3dd0014b846f6bf1fee.ctex"]
 
 [params]
 
