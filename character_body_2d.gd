@@ -7,7 +7,7 @@ const ELEVATE_VELOCITY = -200.0
 
 var currentElevate = false
 
-@onready var anim = $AnimatedSprite2D
+@onready var anim = $Chicken
 var facing_right := true
 
 func _physics_process(delta: float) -> void:

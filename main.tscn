@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://cymils6l4rkqj"]
+[gd_scene load_steps=75 format=4 uid="uid://cymils6l4rkqj"]
 
 [ext_resource type="Script" uid="uid://ctfqkcubrle7j" path="res://character_body_2d.gd" id="2_4c57u"]
 [ext_resource type="Texture2D" uid="uid://6xnpunghjlp" path="res://assets/Idle (32x34).png" id="3_1bvp3"]
@@ -8,10 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://dotjnkvwp7v2d" path="res://platforms.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://3ebymwi3v8ub" path="res://assets/Run (32x34) - Kopie.png" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://diidn87564kkj" path="res://elevator.tscn" id="8_4c57u"]
+[ext_resource type="Texture2D" uid="uid://ctobq3yubffum" path="res://assets/3Hearts.png" id="8_074og"]
 [ext_resource type="PackedScene" uid="uid://bdehs38xyrqwi" path="res://saw.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://8n6caw1jbyii" path="res://star.tscn" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cutxji73uf347" path="res://assets/a_wooden_sign_that_says_this_way_and_points_to_the_left__ef174b89.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://b3snunkmddqrf" path="res://assets/a_wooden_sign_that_says_this_way_and_points_to_the_top_right__c7b77eeb.png" id="12_dg77c"]
+[ext_resource type="Texture2D" uid="uid://b7jkqemni2me4" path="res://assets/Pause.png" id="14_w48qg"]
 
 [sub_resource type="GDScript" id="GDScript_5vw27"]
 
@@ -732,7 +734,7 @@ zoom = Vector2(3.44, 3.44)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="Chicken" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(131, -70)
 scale = Vector2(0.9, 0.9)
@@ -748,43 +750,19 @@ tile_set = SubResource("TileSet_getpj")
 [node name="Path2D" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(16, 14)
 
-[node name="Node" type="Node" parent="."]
+[node name="sawCluster" type="Node" parent="."]
 
-[node name="saw" parent="Node" instance=ExtResource("9_kek77")]
+[node name="saw" parent="sawCluster" instance=ExtResource("9_kek77")]
 position = Vector2(841, -74)
 
-[node name="saw2" parent="Node" instance=ExtResource("9_kek77")]
+[node name="saw2" parent="sawCluster" instance=ExtResource("9_kek77")]
 position = Vector2(761, -75)
 
-[node name="saw3" parent="Node" instance=ExtResource("9_kek77")]
+[node name="saw3" parent="sawCluster" instance=ExtResource("9_kek77")]
 position = Vector2(681, -75)
 
-[node name="saw4" parent="Node" instance=ExtResource("9_kek77")]
+[node name="saw4" parent="sawCluster" instance=ExtResource("9_kek77")]
 position = Vector2(592, -75)
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-texture_filter = 1
-position = Vector2(1641, -61)
-amount = 150
-lifetime = 6.0
-emission_shape = 3
-emission_rect_extents = Vector2(20, 1)
-spread = 50.45
-gravity = Vector2(0, -200)
-hue_variation_min = -0.28
-hue_variation_max = 0.14
-
-[node name="elevator" parent="." instance=ExtResource("8_4c57u")]
-position = Vector2(1640, -60)
-
-[node name="star2" parent="." instance=ExtResource("10_4c57u")]
-position = Vector2(288, -308)
-
-[node name="star2" parent="star2" instance=ExtResource("10_4c57u")]
-position = Vector2(1072, -16)
-
-[node name="star" parent="." instance=ExtResource("10_4c57u")]
-position = Vector2(81, -356)
 
 [node name="sign" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -797,3 +775,55 @@ texture_filter = 1
 position = Vector2(1001, -136)
 scale = Vector2(0.135, 0.135)
 texture = ExtResource("12_dg77c")
+
+[node name="Stars" type="Node" parent="."]
+
+[node name="star3" parent="Stars" instance=ExtResource("10_4c57u")]
+position = Vector2(1362, -325)
+
+[node name="star2" parent="Stars" instance=ExtResource("10_4c57u")]
+position = Vector2(288, -308)
+
+[node name="star" parent="Stars" instance=ExtResource("10_4c57u")]
+position = Vector2(81, -356)
+
+[node name="elevatorSetup" type="Node" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="elevatorSetup"]
+texture_filter = 1
+position = Vector2(1641, -61)
+amount = 150
+lifetime = 6.0
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+spread = 50.45
+gravity = Vector2(0, -200)
+hue_variation_min = -0.28
+hue_variation_max = 0.14
+
+[node name="elevator" parent="elevatorSetup" instance=ExtResource("8_4c57u")]
+position = Vector2(1640, -60)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -235.0
+offset_top = 9.0
+offset_right = 228.0
+offset_bottom = 212.0
+grow_horizontal = 0
+scale = Vector2(0.480248, 0.407685)
+texture = ExtResource("8_074og")
+
+[node name="TextureButton" type="TextureButton" parent="UI"]
+texture_filter = 1
+offset_left = 13.0
+offset_top = 10.0
+offset_right = 69.0
+offset_bottom = 66.0
+scale = Vector2(1.79383, 1.90289)
+texture_normal = ExtResource("14_w48qg")
