@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://8n6caw1jbyii"]
+
+[ext_resource type="Texture2D" uid="uid://c2c5s1wod3t56" path="res://assets/a_golden_star_with_a_bit_of_a_3d_effect__2dfec0d7.png" id="1_46ao5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qn1rc"]
+radius = 14.3178
+
+[node name="star" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qn1rc")
+
+[node name="AGoldenStarWithABitOfA3dEffect2Dfec0d7" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("1_46ao5")
