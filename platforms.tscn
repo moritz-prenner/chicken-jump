@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://dotjnkvwp7v2d"]
+
+[ext_resource type="Script" uid="uid://ixj04kf18e0b" path="res://move-platform.gd" id="1_6a4s0"]
+[ext_resource type="Texture2D" uid="uid://b0p6mxbsdqb32" path="res://assets/On (32x10).png" id="2_mnady"]
+
+[sub_resource type="Curve2D" id="Curve2D_6a4s0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 249, 24, 0, 0, 0, 0, 249, -167)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
+atlas = ExtResource("2_mnady")
+region = Rect2(0, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
+atlas = ExtResource("2_mnady")
+region = Rect2(32, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
+atlas = ExtResource("2_mnady")
+region = Rect2(64, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
+atlas = ExtResource("2_mnady")
+region = Rect2(96, 0, 32, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnady"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}],
+"loop": true,
+"name": &"floating",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33aaj"]
+size = Vector2(14, 46)
+
+[sub_resource type="Animation" id="Animation_272bh"]
+length = 4.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+resource_name = "move-platform1"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(-1.55, -1.55, -1.55),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_272bh"),
+&"move-platform1": SubResource("Animation_7mycd")
+}
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_6a4s0")
+script = ExtResource("1_6a4s0")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(249, 24)
+rotation = -1.5708
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
+texture_filter = 1
+position = Vector2(1.52588e-05, -0.999998)
+rotation = 1.5708
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_mnady")
+animation = &"floating"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_33aaj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5vw27")
+}
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(249, 24)
+rotation = -1.5708
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")

@@ -1,25 +1,47 @@
 extends CharacterBody2D
 
-
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
+@onready var anim = $AnimatedSprite2D
+var facing_right := true
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Schwerkraft
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y += get_gravity().y * delta
 
-	# Handle jump.
+
+	# Springen
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Bewegung links/rechts
 	var direction := Input.get_axis("left", "right")
-	if direction:
+	if direction != 0:
 		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	move_and_slide()
+		if direction > 0:
+			facing_right = true
+			anim.play("run-right")
+		else:
+			facing_right = false
+			anim.play("run-left")
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, SPEED)
+
+		if is_on_floor():
+			if facing_right:
+				anim.play("idle-right")
+			else:
+				anim.play("idle-left")
+
+	move_and_slide()  # Kein velocity übergeben in Godot 4 – es nutzt self.velocity
+
+
+
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("saw"):
+		velocity.y = JUMP_VELOCITY
