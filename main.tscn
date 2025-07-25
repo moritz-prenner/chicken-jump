@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://cymils6l4rkqj"]
+[gd_scene load_steps=81 format=4 uid="uid://cymils6l4rkqj"]
 
 [ext_resource type="Script" uid="uid://ctfqkcubrle7j" path="res://character_body_2d.gd" id="2_4c57u"]
 [ext_resource type="Texture2D" uid="uid://6xnpunghjlp" path="res://assets/Idle (32x34).png" id="3_1bvp3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cu1aveelhgv5g" path="res://assets/Run (32x34).png" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://dotjnkvwp7v2d" path="res://platforms.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://3ebymwi3v8ub" path="res://assets/Run (32x34) - Kopie.png" id="6_4c57u"]
+[ext_resource type="Texture2D" uid="uid://b5c3gkibqejfy" path="res://assets/Banner.png" id="6_82xsv"]
 [ext_resource type="PackedScene" uid="uid://diidn87564kkj" path="res://elevator.tscn" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://ctobq3yubffum" path="res://assets/3Hearts.png" id="8_074og"]
 [ext_resource type="PackedScene" uid="uid://bdehs38xyrqwi" path="res://saw.tscn" id="9_kek77"]
@@ -15,8 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://b3snunkmddqrf" path="res://assets/a_wooden_sign_that_says_this_way_and_points_to_the_top_right__c7b77eeb.png" id="12_dg77c"]
 [ext_resource type="Script" uid="uid://bogalxsdma7rt" path="res://hearts_manager.gd" id="14_vivmo"]
 [ext_resource type="Texture2D" uid="uid://b7jkqemni2me4" path="res://assets/Pause.png" id="14_w48qg"]
-
-[sub_resource type="GDScript" id="GDScript_5vw27"]
+[ext_resource type="FontFile" uid="uid://jkkdxpb60uhn" path="res://assets/Jersey15-Regular.ttf" id="16_2cqfq"]
+[ext_resource type="Script" uid="uid://bxufa20dnktuy" path="res://trigger_pause_menu.gd" id="16_yaehf"]
+[ext_resource type="StyleBox" uid="uid://b87ismd58grl6" path="res://assets/menuButton.tres" id="18_074og"]
+[ext_resource type="StyleBox" uid="uid://bmrmcwi4vufjd" path="res://assets/menuButtonHover.tres" id="19_cegan"]
+[ext_resource type="Script" uid="uid://djxd10wn1cun3" path="res://dialogueController.gd" id="21_getpj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 height = 32.0
@@ -720,7 +724,6 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_5vw27")
 sources/0 = SubResource("TileSetAtlasSource_82xsv")
 
 [node name="Node" type="Node"]
-script = SubResource("GDScript_5vw27")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("2_4c57u")
@@ -821,7 +824,7 @@ scale = Vector2(0.480248, 0.407685)
 texture = ExtResource("8_074og")
 script = ExtResource("14_vivmo")
 
-[node name="TextureButton" type="TextureButton" parent="UI"]
+[node name="TriggerPauseMenu" type="TextureButton" parent="UI"]
 texture_filter = 1
 offset_left = 37.0
 offset_top = 26.0
@@ -829,3 +832,279 @@ offset_right = 93.0
 offset_bottom = 82.0
 scale = Vector2(1.3642, 1.24592)
 texture_normal = ExtResource("14_w48qg")
+script = ExtResource("16_yaehf")
+
+[node name="Pause" type="Node" parent="UI"]
+
+[node name="PauseMenu" type="Panel" parent="UI/Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Pause/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.331163
+anchor_top = 0.155864
+anchor_right = 0.665365
+anchor_bottom = 0.280864
+offset_left = 88.5
+offset_right = -88.5
+offset_bottom = -37.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 80
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.269965
+anchor_top = 0.317901
+anchor_right = 0.715278
+anchor_bottom = 0.808642
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Resume" type="Button" parent="UI/Pause/PauseMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal_mirrored = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "RESUME"
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Button" parent="UI/Pause/PauseMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "OPTIONS"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="UI/Pause/PauseMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal_mirrored = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "SAVE & EXIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="UI/Pause/PauseMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal_mirrored = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "CREDITS"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="Panel" parent="UI/Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Pause/GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.331163
+anchor_top = 0.155864
+anchor_right = 0.665365
+anchor_bottom = 0.280864
+offset_left = 88.5
+offset_right = -88.5
+offset_bottom = -37.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 80
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause/GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.269965
+anchor_top = 0.317901
+anchor_right = 0.715278
+anchor_bottom = 0.808642
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Retry" type="Button" parent="UI/Pause/GameOver/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal_mirrored = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "RETRY"
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Button" parent="UI/Pause/GameOver/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "OPTIONS"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="UI/Pause/GameOver/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal_mirrored = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "SAVE & EXIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="UI/Pause/GameOver/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("18_074og")
+theme_override_styles/disabled_mirrored = ExtResource("18_074og")
+theme_override_styles/disabled = ExtResource("18_074og")
+theme_override_styles/hover_pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/hover_pressed = ExtResource("18_074og")
+theme_override_styles/hover_mirrored = ExtResource("18_074og")
+theme_override_styles/hover = ExtResource("19_cegan")
+theme_override_styles/pressed_mirrored = ExtResource("18_074og")
+theme_override_styles/pressed = ExtResource("18_074og")
+theme_override_styles/normal_mirrored = ExtResource("18_074og")
+theme_override_styles/normal = ExtResource("18_074og")
+text = "CREDITS"
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialog" type="Node" parent="UI"]
+
+[node name="TextureRect" type="TextureRect" parent="UI/Dialog"]
+anchors_preset = -1
+anchor_left = -0.135417
+anchor_top = -0.148148
+anchor_right = 0.389757
+anchor_bottom = 0.20216
+offset_left = 450.0
+offset_top = 106.0
+offset_right = 450.0
+offset_bottom = 106.0
+scale = Vector2(0.92728, 0.78347)
+texture = ExtResource("6_82xsv")
+script = ExtResource("21_getpj")
+metadata/_edit_use_anchors_ = true
+
+[node name="infoText" type="Label" parent="UI/Dialog/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0285203
+anchor_top = -0.0506051
+anchor_right = 0.935958
+anchor_bottom = 0.711477
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Welcome to this Game! First I am going to walk you  through the basic  controls. After that I am going  to show you the basic mechanics."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="UI/Dialog/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0695182
+anchor_top = 0.596016
+anchor_right = 0.900923
+anchor_bottom = 0.838306
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Press A or Left Mouse Button to continue!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="UI/TriggerPauseMenu" to="UI/TriggerPauseMenu" method="_on_pressed"]
+[connection signal="pressed" from="UI/Pause/PauseMenu/VBoxContainer/Resume" to="UI/TriggerPauseMenu" method="_on_resume_pressed"]
