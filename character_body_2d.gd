@@ -15,13 +15,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 
-
+	
 	# Springen
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	var direction := Input.get_axis("left", "right")
+	
+	
 
 	# Bewegung links/rechts
-	var direction := Input.get_axis("left", "right")
+	
 	if direction != 0:
 		velocity.x = direction * SPEED
 
@@ -39,6 +43,13 @@ func _physics_process(delta: float) -> void:
 				anim.play("idle-right")
 			else:
 				anim.play("idle-left")
+				
+	if Input.is_action_just_pressed("Accept") and is_on_floor():
+		if facing_right == true:
+			anim.play("hit-right")
+		else:
+			anim.play("hit-right")
+			
 	if currentElevate == true:
 		velocity.y = ELEVATE_VELOCITY
 	
