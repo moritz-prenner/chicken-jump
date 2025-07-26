@@ -54,7 +54,8 @@ func handle_movement_input() -> void:
 
 	# Springen
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		jump()
+		
 
 	# Dash starten (nur am Boden und wenn kein Cooldown läuft)
 	if Input.is_action_just_pressed("attack") and is_on_floor() and dash_cooldown_timer <= 0.0:
@@ -96,3 +97,6 @@ func elevate():
 
 func elevateEnd():
 	currentElevate = false
+
+func jump():
+	velocity.y = JUMP_VELOCITY
