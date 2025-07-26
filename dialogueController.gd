@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 
 func _on_trigger_1_body_entered(body: Node2D) -> void:
 	if body == player and firstTime1 == true:
+		await wait_until_on_floor()
 		visible = true
 		get_tree().paused = true
 		infoText.text = fourthMessage
@@ -72,6 +73,7 @@ func _on_trigger_1_body_entered(body: Node2D) -> void:
 
 func _on_trigger_2_body_entered(body: Node2D) -> void:
 	if body == player and firstTime2 == true:
+		await wait_until_on_floor()
 		visible = true
 		get_tree().paused = true
 		infoText.text = fifthMessage
@@ -81,8 +83,10 @@ func _on_trigger_2_body_entered(body: Node2D) -> void:
 		get_tree().paused = false
 		firstTime2 = false
 
+
 func _on_trigger_3_body_entered(body: Node2D) -> void:
 	if body == player and firstTime3 == true:
+		await wait_until_on_floor()
 		visible = true
 		get_tree().paused = true
 		infoText.text = sixthMessage
@@ -95,6 +99,7 @@ func _on_trigger_3_body_entered(body: Node2D) -> void:
 
 func _on_trigger_4_body_entered(body: Node2D) -> void:
 	if body == player and firstTime4 == true:
+		await wait_until_on_floor()
 		visible = true
 		get_tree().paused = true
 		infoText.text = seventhMessage
@@ -107,6 +112,7 @@ func _on_trigger_4_body_entered(body: Node2D) -> void:
 
 func _on_trigger_5_body_entered(body: Node2D) -> void:
 	if body == player and firstTime5 == true:
+		await wait_until_on_floor()
 		visible = true
 		get_tree().paused = true
 		infoText.text = eighthMessage
@@ -115,3 +121,7 @@ func _on_trigger_5_body_entered(body: Node2D) -> void:
 		visible = false
 		get_tree().paused = false
 		firstTime5 = false
+
+func wait_until_on_floor() -> void:
+	while not player.is_on_floor():
+		await get_tree().process_frame

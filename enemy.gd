@@ -9,17 +9,18 @@ var y_delta
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	anim.play("default")
-	animationPlayer.play("move-enemy")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	animationPlayer.play("move-enemy")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
-		y_delta = position.y - player.y
+		print("touched")
+		y_delta = position.y - player.position.y
 		if (y_delta > 30):
 			player.jump()
 			queue_free()

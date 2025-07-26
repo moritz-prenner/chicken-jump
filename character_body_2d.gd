@@ -16,6 +16,8 @@ var dash_cooldown_timer = 0.0
 var hit_anim_timer = 0.0
 var facing_right := true
 
+
+
 @onready var anim = $Chicken
 
 func _physics_process(delta: float) -> void:
