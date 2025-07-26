@@ -18,7 +18,7 @@ through the basic
 controls. After that I am going 
 to show you the basic mechanics."""
 
-const secondMessage = """Press the left and right arrow Keys to move around. 
+const secondMessage = """Press the left and right arrow Keys to move around. You can dash by pressing Shift or A but the dash has a 4 second cooldown! 
 Press Space or B to jump!"""
 
 const thirdMessage = "Use the elevator on the right to get to the platform above!"
@@ -27,7 +27,7 @@ const fourthMessage = """Every Level you can obtain up to three stars. At the en
 
 const fifthMessage = """On the top right of the screen you can see three Hearts. If you take damage you lose one Heart. For example saws give damage when touched. Now try to not touch those saws!"""
 
-const sixthMessage = """There are also Enemies in this Game. To beat them you have to hit them by pressing shift or A. But be careful they can hit you back!"""
+const sixthMessage = """There are also Enemies in this Game. To beat them you have to jump on their Head. But be careful to not touch dem on their sides!"""
 
 const seventhMessage = """If you see a fan blowing air in one directon you can hop into the stream and travel from A to B in a few seconds."""
 
