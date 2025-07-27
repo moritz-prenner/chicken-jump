@@ -1,13 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://dotjnkvwp7v2d"]
 
-[ext_resource type="Script" uid="uid://ixj04kf18e0b" path="res://move-platform.gd" id="1_6a4s0"]
+[ext_resource type="Script" path="res://move-platform.gd" id="1_6a4s0"]
 [ext_resource type="Texture2D" uid="uid://b0p6mxbsdqb32" path="res://assets/On (32x10).png" id="2_mnady"]
 
 [sub_resource type="Curve2D" id="Curve2D_6a4s0"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 249, 24, 0, 0, 0, 0, 249, -167)
-}
-point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
 atlas = ExtResource("2_mnady")
@@ -91,7 +87,7 @@ curve = SubResource("Curve2D_6a4s0")
 script = ExtResource("1_6a4s0")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-position = Vector2(249, 24)
+position = Vector2(250, 23)
 rotation = -1.5708
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
@@ -112,8 +108,9 @@ libraries = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(249, 24)
+position = Vector2(250, 23)
 rotation = -1.5708
+rotates = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")

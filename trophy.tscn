@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkkuamoekuogc"]
+[gd_scene load_steps=16 format=3 uid="uid://dkkuamoekuogc"]
 
 [ext_resource type="Texture2D" uid="uid://bev3xqrr4mgsn" path="res://assets/End (Idle).png" id="1_158bs"]
 [ext_resource type="Script" uid="uid://oykfwdwri02p" path="res://trophy.gd" id="1_qntm3"]
 [ext_resource type="Texture2D" uid="uid://51mcdv0wldee" path="res://assets/End (Pressed) (64x64).png" id="3_5eag2"]
+[ext_resource type="AudioStream" uid="uid://cpd11w33t3lwy" path="res://assets/521642__fupicat__winharpsichord.wav" id="4_5eag2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uxowg"]
 radius = 27.0
@@ -95,5 +96,9 @@ shape = SubResource("CapsuleShape2D_uxowg")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5eag2")
 animation = &"triggered"
+
+[node name="clear_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5eag2")
+volume_db = 7.621
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://bag7mdcgif350"]
+
+[ext_resource type="Script" uid="uid://djv14vy5uh4wq" path="res://credits.gd" id="1_nm7lk"]
+[ext_resource type="FontFile" uid="uid://jkkdxpb60uhn" path="res://assets/Jersey15-Regular.ttf" id="2_c1t8d"]
+[ext_resource type="StyleBox" uid="uid://b87ismd58grl6" path="res://assets/menuButton.tres" id="3_pjc1l"]
+[ext_resource type="StyleBox" uid="uid://bmrmcwi4vufjd" path="res://assets/menuButtonHover.tres" id="4_j6beo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4wvt"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nm7lk")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0303819
+anchor_top = -0.0277778
+anchor_right = 1.02951
+anchor_bottom = 1.06636
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.169271
+anchor_top = 0.0524691
+anchor_right = 0.814236
+anchor_bottom = 0.938272
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4wvt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33844
+anchor_top = 0.0380048
+anchor_right = 0.651811
+anchor_bottom = 0.230404
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_c1t8d")
+theme_override_font_sizes/font_size = 80
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+anchor_left = 0.0349933
+anchor_top = 0.222222
+anchor_right = 0.958277
+anchor_bottom = 0.985597
+theme_override_fonts/font = ExtResource("2_c1t8d")
+theme_override_font_sizes/font_size = 32
+text = "\"Vibing Over Venus\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+Bottle-Button Press by Sheyvan -- https://freesound.org/s/376961/ -- License: Creative Commons 0
+
+Pixel Adventure 1 + Pixel Adventure 2 -- Pixel Frog (itch.io)"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="Button" parent="Panel"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22611
+anchor_top = 0.867596
+anchor_right = 0.759975
+anchor_bottom = 0.959158
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_c1t8d")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_pjc1l")
+theme_override_styles/disabled_mirrored = ExtResource("3_pjc1l")
+theme_override_styles/disabled = ExtResource("3_pjc1l")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_pjc1l")
+theme_override_styles/hover_pressed = ExtResource("3_pjc1l")
+theme_override_styles/hover_mirrored = ExtResource("3_pjc1l")
+theme_override_styles/hover = ExtResource("4_j6beo")
+theme_override_styles/pressed_mirrored = ExtResource("3_pjc1l")
+theme_override_styles/pressed = ExtResource("3_pjc1l")
+theme_override_styles/normal_mirrored = ExtResource("3_pjc1l")
+theme_override_styles/normal = ExtResource("3_pjc1l")
+text = "EXIT"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]

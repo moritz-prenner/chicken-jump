@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://cwl4no0dumpe0"]
 
-[ext_resource type="Script" uid="uid://bmmg4jowu1ihk" path="res://enemy.gd" id="1_iifgy"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_iifgy"]
 [ext_resource type="Texture2D" uid="uid://v12poov23ndf" path="res://assets/Run (32x32).png" id="2_qi2p4"]
 
 [sub_resource type="Curve2D" id="Curve2D_4gyqm"]
@@ -178,7 +178,7 @@ script = ExtResource("1_iifgy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(25, -23)
-rotation = 0.00182203
+rotation = 0.00202901
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")

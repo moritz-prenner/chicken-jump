@@ -3,6 +3,9 @@ extends Area2D
 @onready var anim = $AnimatedSprite2D
 @onready var map = $"../TileMapLayer"
 @onready var levelClearedController = $"../UI/LevelCleared"
+@onready var clear_sfx = $clear_sfx
+
+var firstTimeTrophy = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,8 +18,10 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("entered")
-	if body != map:
-		print("detectet")
+	if body != map and firstTimeTrophy == true:
+		firstTimeTrophy = false
 		anim.play("triggered")
+		clear_sfx.play()
+		await get_tree().create_timer(3.0).timeout
 		levelClearedController.levelCleared()
+		

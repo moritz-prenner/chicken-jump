@@ -1,9 +1,8 @@
 extends Area2D
 
 @onready var player = $"../../CharacterBody2D"
+@onready var level = $"../../UI/LevelCleared"
 
-
-var starCounter = 0
 var firstStar = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,8 +16,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body == player:
-		if firstStar == true:
-			firstStar = false
-		else:
-			starCounter += 1
+		level.starCounter = level.starCounter + 1
+		queue_free()
 		visible = false

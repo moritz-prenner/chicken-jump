@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bim0hpm4rhii4"]
+
+[ext_resource type="AudioStream" uid="uid://brhk27yodnqp5" path="res://assets/Vibing Over Venus.mp3" id="1_g84o6"]
+[ext_resource type="Script" uid="uid://bcpdhi0o4my5i" path="res://audio_stream_player.gd" id="2_td4n3"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_g84o6")
+autoplay = true
+script = ExtResource("2_td4n3")

@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://bks2n6lr51ryp"]
+
+[ext_resource type="Script" uid="uid://du4rnqbw0xprq" path="res://options.gd" id="1_07a1d"]
+[ext_resource type="FontFile" uid="uid://jkkdxpb60uhn" path="res://assets/Jersey15-Regular.ttf" id="2_p8250"]
+[ext_resource type="StyleBox" uid="uid://b87ismd58grl6" path="res://assets/menuButton.tres" id="3_kls10"]
+[ext_resource type="StyleBox" uid="uid://bmrmcwi4vufjd" path="res://assets/menuButtonHover.tres" id="4_0kfld"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5qgn"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmi34"]
+
+[node name="Options" type="Panel"]
+offset_left = 303.0
+offset_top = 98.0
+offset_right = 825.0
+offset_bottom = 509.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w5qgn")
+script = ExtResource("1_07a1d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.270115
+anchor_top = 0.0541667
+anchor_right = 0.712644
+anchor_bottom = 0.222917
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_p8250")
+theme_override_font_sizes/font_size = 80
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 68.0
+offset_top = 99.0
+offset_right = 438.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("2_p8250")
+theme_override_font_sizes/font_size = 30
+text = "MUSIC VOLUME"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 65.0
+offset_top = 205.0
+offset_right = 435.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("2_p8250")
+theme_override_font_sizes/font_size = 30
+text = "SOUND VOLUME"
+vertical_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 157.0
+offset_right = 481.0
+offset_bottom = 205.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_vmi34")
+max_value = 1.5
+step = 0.001
+value = 1.5
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 245.0
+offset_right = 480.0
+offset_bottom = 315.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_vmi34")
+max_value = 1.5
+step = 0.001
+value = 1.5
+
+[node name="save" type="Button" parent="."]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.216475
+anchor_top = 0.788321
+anchor_right = 0.741379
+anchor_bottom = 0.917435
+theme_override_fonts/font = ExtResource("2_p8250")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_kls10")
+theme_override_styles/disabled_mirrored = ExtResource("3_kls10")
+theme_override_styles/disabled = ExtResource("3_kls10")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_kls10")
+theme_override_styles/hover_pressed = ExtResource("3_kls10")
+theme_override_styles/hover_mirrored = ExtResource("3_kls10")
+theme_override_styles/hover = ExtResource("4_0kfld")
+theme_override_styles/pressed_mirrored = ExtResource("3_kls10")
+theme_override_styles/pressed = ExtResource("3_kls10")
+theme_override_styles/normal_mirrored = ExtResource("3_kls10")
+theme_override_styles/normal = ExtResource("3_kls10")
+text = "SAVE & EXIT"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="value_changed" from="HSlider2" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

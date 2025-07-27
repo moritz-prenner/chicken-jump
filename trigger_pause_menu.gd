@@ -3,6 +3,7 @@ extends TextureButton
 @onready var PauseMenu = $"../Pause/PauseMenu"
 @onready var dialog = $"../../DialogueUI/TextureRect"
 @onready var resume = $"../Pause/PauseMenu/VBoxContainer/Resume"
+@onready var options = $"../Options"
 
 # Called when the node enters the scene tree for the first time.
 
@@ -27,3 +28,11 @@ func _on_resume_pressed() -> void:
 	PauseMenu.visible = false
 	get_tree().paused = false
 	
+
+
+func _on_options_pressed() -> void:
+	options.openOptions()
+
+
+func _on_credits_pressed() -> void:
+	PauseMenu.visible = false

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="parkour-cat"
-run/main_scene="uid://cymils6l4rkqj"
+run/main_scene="uid://grw8lwte7rfk"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalAudioStreamPlayer="*res://audio_stream_player.tscn"
 
 [editor_plugins]
 

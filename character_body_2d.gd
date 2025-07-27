@@ -87,7 +87,6 @@ func start_dash():
 	# Erst run, dann hit
 	anim.play("run-right" if facing_right else "run-left")
 	await get_tree().create_timer(0.1).timeout
-	anim.play("hit")
 	hit_anim_timer = HIT_ANIM_DURATION
 
 func hit():
