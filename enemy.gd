@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
-		print("touched")
 		y_delta = position.y - player.position.y
 		if (y_delta > 30):
 			player.jump()

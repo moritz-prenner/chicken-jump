@@ -54,5 +54,20 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_77yi3")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -14)
+amount = 150
+lifetime = 6.0
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+spread = 50.45
+gravity = Vector2(0, -200)
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(0.402922, 0.745585, 0.923311, 1)
+hue_variation_min = -0.28
+hue_variation_max = 0.14
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var player = $"../../CharacterBody2D"
 
+
 var starCounter = 0
 var firstStar = true
 # Called when the node enters the scene tree for the first time.
