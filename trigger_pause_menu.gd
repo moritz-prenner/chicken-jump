@@ -1,7 +1,7 @@
 extends TextureButton
 
 @onready var PauseMenu = $"../Pause/PauseMenu"
-@onready var dialog = $"../../DialogueUI/TextureRect"
+
 @onready var resume = $"../Pause/PauseMenu/VBoxContainer/Resume"
 @onready var options = $"../Options"
 
@@ -15,13 +15,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		PauseMenu.visible = true
-		dialog.visible = false
+		
 		get_tree().paused = true
 
 
 func _on_pressed() -> void:
 	PauseMenu.visible = true
-	dialog.visible = false
+	
 	get_tree().paused = true
 
 func _on_resume_pressed() -> void:

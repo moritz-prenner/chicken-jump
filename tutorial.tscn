@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://8n6caw1jbyii" path="res://star.tscn" id="15_8kc7p"]
 [ext_resource type="Script" uid="uid://cf5l3bhv6r76o" path="res://ui.gd" id="16_ermjs"]
 [ext_resource type="Texture2D" uid="uid://ctobq3yubffum" path="res://assets/3Hearts.png" id="17_cd6k6"]
-[ext_resource type="Script" path="res://hearts_manager.gd" id="18_7t0w2"]
+[ext_resource type="Script" uid="uid://bogalxsdma7rt" path="res://hearts_manager.gd" id="18_7t0w2"]
 [ext_resource type="Texture2D" uid="uid://b7jkqemni2me4" path="res://assets/Pause.png" id="19_ptw4k"]
 [ext_resource type="Script" uid="uid://cjolynid8obmc" path="res://trigger_pause_menu.gd" id="20_0l7fi"]
 [ext_resource type="FontFile" uid="uid://jkkdxpb60uhn" path="res://assets/Jersey15-Regular.ttf" id="21_nscyd"]
@@ -925,19 +925,22 @@ layer_0/tile_data = PackedInt32Array(-983046, 0, 0, -917510, 0, 1, -851974, 0, 2
 position = Vector2(16, 14)
 curve = SubResource("Curve2D_brok5")
 
-[node name="sawCluster" type="Node" parent="."]
-
-[node name="saw" parent="sawCluster" instance=ExtResource("11_foqjq")]
+[node name="saw" parent="." instance=ExtResource("11_foqjq")]
 position = Vector2(841, -74)
 
-[node name="saw2" parent="sawCluster" instance=ExtResource("11_foqjq")]
+[node name="saw2" parent="." instance=ExtResource("11_foqjq")]
 position = Vector2(761, -75)
 
-[node name="saw3" parent="sawCluster" instance=ExtResource("11_foqjq")]
+[node name="saw3" parent="." instance=ExtResource("11_foqjq")]
 position = Vector2(681, -75)
 
-[node name="saw4" parent="sawCluster" instance=ExtResource("11_foqjq")]
+[node name="saw4" parent="." instance=ExtResource("11_foqjq")]
 position = Vector2(592, -75)
+
+[node name="Buttonclick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_u2oec")
+volume_db = 24.0
+bus = &"SFX"
 
 [node name="sign" type="Sprite2D" parent="."]
 z_index = -1
@@ -1392,11 +1395,6 @@ scale = Vector2(1.75, 1.75)
 
 [node name="trophy" parent="." instance=ExtResource("31_mjxwt")]
 position = Vector2(1827, -370)
-
-[node name="Buttonclick" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("32_u2oec")
-volume_db = 24.0
-bus = &"SFX"
 
 [node name="creditsOpener" type="Node" parent="."]
 script = ExtResource("33_brok5")

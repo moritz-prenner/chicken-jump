@@ -6,7 +6,7 @@ var currentHearts = 3
 @onready var threeHeartsTexture = preload("res://assets/3Hearts.png")
 
 @onready var gameOverScreen = $"../Pause/GameOver"
-@onready var dialog = $"../../DialogueUI/TextureRect"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gameOverScreen.visible = false
@@ -21,7 +21,6 @@ func damage():
 	if currentHearts == 0:
 		gameOverScreen.visible = true
 		get_tree().paused = true
-		dialog.visible = false
 	else:
 		match currentHearts:
 			3:
