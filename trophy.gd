@@ -24,4 +24,6 @@ func _on_body_entered(body: Node2D) -> void:
 		clear_sfx.play()
 		await get_tree().create_timer(3.0).timeout
 		levelClearedController.levelCleared()
+		await get_tree().create_timer(1.0).timeout
+		visible = false
 		

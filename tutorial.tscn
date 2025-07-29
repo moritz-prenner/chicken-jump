@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://cymils6l4rkqj"]
+[gd_scene load_steps=113 format=4 uid="uid://cymils6l4rkqj"]
 
 [ext_resource type="Script" uid="uid://ctfqkcubrle7j" path="res://character_body_2d.gd" id="1_0yspx"]
 [ext_resource type="Texture2D" uid="uid://p8bpsfg0ki0y" path="res://assets/Hit (32x34).png" id="2_pm7ge"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://btphkgblhi57u" path="res://assets/2.mp3" id="32_u2oec"]
 [ext_resource type="Script" uid="uid://lwgs4huw5k0b" path="res://credits_opener.gd" id="33_brok5"]
 [ext_resource type="PackedScene" uid="uid://bag7mdcgif350" path="res://credits.tscn" id="34_e3xdn"]
+[ext_resource type="Script" uid="uid://b8wbpunx73h6l" path="res://enemy-maingame.gd" id="35_e3xdn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 height = 32.0
@@ -886,6 +887,12 @@ normal = Vector2(-1, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ryguw"]
 a = Vector2(-2, -150)
 
+[sub_resource type="Curve2D" id="Curve2D_12dxd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 25, -19, 0, 0, 0, 0, 131, -19)
+}
+point_count = 2
+
 [node name="Node" type="Node"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -1389,15 +1396,16 @@ position = Vector2(72, -61)
 shape = SubResource("SegmentShape2D_ryguw")
 one_way_collision = true
 
-[node name="enemy" parent="." instance=ExtResource("30_clox6")]
-position = Vector2(1150, -261)
-scale = Vector2(1.75, 1.75)
-
 [node name="trophy" parent="." instance=ExtResource("31_mjxwt")]
 position = Vector2(1827, -370)
 
 [node name="creditsOpener" type="Node" parent="."]
 script = ExtResource("33_brok5")
+
+[node name="Path2D2" parent="." instance=ExtResource("30_clox6")]
+position = Vector2(1172, -272)
+curve = SubResource("Curve2D_12dxd")
+script = ExtResource("35_e3xdn")
 
 [connection signal="pressed" from="UI/TriggerPauseMenu" to="UI/TriggerPauseMenu" method="_on_pressed"]
 [connection signal="pressed" from="UI/Pause/PauseMenu/VBoxContainer/Resume" to="UI/TriggerPauseMenu" method="_on_resume_pressed"]

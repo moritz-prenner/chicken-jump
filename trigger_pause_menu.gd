@@ -4,6 +4,7 @@ extends TextureButton
 
 @onready var resume = $"../Pause/PauseMenu/VBoxContainer/Resume"
 @onready var options = $"../Options"
+@onready var credits: Control = $"../Credits"
 
 # Called when the node enters the scene tree for the first time.
 
@@ -36,3 +37,4 @@ func _on_options_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	PauseMenu.visible = false
+	credits.visible = true

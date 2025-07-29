@@ -5,6 +5,8 @@ extends Control
 
 @onready var tutorial_scene: String = "res://tutorial.tscn"
 @onready var main_game: String = "res://main-game.tscn"
+@onready var options: Panel = $Options
+@onready var credits: Control = $Credits
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,3 +29,13 @@ func _on_tutorial_pressed() -> void:
 
 func _on_main_pressed() -> void:
 	get_tree().change_scene_to_file(main_game)
+
+
+func _on_options_pressed() -> void:
+	options.visible = true
+	panel.visible = false
+
+
+func _on_credits_pressed() -> void:
+	visible = false
+	credits.visible = true
