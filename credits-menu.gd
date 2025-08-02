@@ -21,4 +21,4 @@ func _on_resume_pressed() -> void:
 func _on_exit_pressed() -> void:
 	visible = false
 	get_tree().paused = false
-	panel.visible = false
+	panel.visible = true

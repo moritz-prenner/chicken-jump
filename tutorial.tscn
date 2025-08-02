@@ -894,6 +894,8 @@ _data = {
 point_count = 2
 
 [node name="Node" type="Node"]
+metadata/_edit_vertical_guides_ = [-1.70256e+07]
+metadata/_edit_horizontal_guides_ = [-23666.0]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(145, -45)

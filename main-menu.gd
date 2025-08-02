@@ -37,5 +37,5 @@ func _on_options_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	visible = false
+	panel.visible = false
 	credits.visible = true

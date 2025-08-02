@@ -34,6 +34,7 @@ func deactivate():
 	visible = false
 	set_process(false)
 	set_physics_process(false)
+	position.x += 100000000000000
 	
 func reactivate():
 	active1 = true

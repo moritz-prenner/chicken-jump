@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://8n6caw1jbyii"]
 
 [ext_resource type="Texture2D" uid="uid://c2c5s1wod3t56" path="res://assets/a_golden_star_with_a_bit_of_a_3d_effect__2dfec0d7.png" id="1_46ao5"]
-[ext_resource type="Script" path="res://star.gd" id="1_e2x7v"]
+[ext_resource type="Script" uid="uid://cvy8g2obtqlo1" path="res://star.gd" id="1_e2x7v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qn1rc"]
 radius = 14.3178

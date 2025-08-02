@@ -27,12 +27,16 @@ func _on_credits_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
-	enemy.deactivate()
+	enemy.reactivate()
 	visible = false
 	match currentCheckpoint:
 		0:
+			get_tree().paused = false
 			player.position = checkpoint.position
 			camera_2d.position = checkpoint.position
+			
 		1:
+			get_tree().paused = false
 			player.position = checkpoint2.position
 			camera_2d.position = checkpoint2.position
+			

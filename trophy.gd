@@ -4,6 +4,7 @@ extends Area2D
 @onready var map = $"../TileMapLayer"
 @onready var levelClearedController = $"../UI/LevelCleared"
 @onready var clear_sfx = $clear_sfx
+@onready var star_2: Area2D = $"../star/star2"
 
 var firstTimeTrophy = true
 
@@ -26,4 +27,5 @@ func _on_body_entered(body: Node2D) -> void:
 		levelClearedController.levelCleared()
 		await get_tree().create_timer(1.0).timeout
 		visible = false
+		star_2.starReset()
 		

@@ -19,3 +19,6 @@ func _on_body_entered(body: Node2D) -> void:
 		level.starCounter = level.starCounter + 1
 		queue_free()
 		visible = false
+
+func starReset():
+	level.starCounter = 0;
